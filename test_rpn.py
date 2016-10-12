@@ -18,3 +18,6 @@ class TestBasics(unittest.TestCase):
   def test_badstring(self):
     with self.assertRaises(TypeError):
       rpn.calculate("1 2 3 +")
+  def test_add_again(self):
+    result = rpn.calculate("1 1 + 2 2 + +")
+    self.assertEqual(6, result)
