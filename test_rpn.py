@@ -1,4 +1,5 @@
 import unittest
+
 import rpn
 
 class TestBasics(unittest.TestCase):
@@ -8,12 +9,12 @@ class TestBasics(unittest.TestCase):
   def test_subtract(self):
     result = rpn.calculate("5 3 -")
     self.assertEqual(2, result)
-  def test_toomanythings(self):
+  def test_multiply(self):
+    result = rpn.calculate("5 3 *")
+    self.assertEqual(15, result)
+  def test_divide(self):
+    result = rpn.calculate("6 3 /")
+    self.assertEqual(2, result)
+  def test_badstring(self):
     with self.assertRaises(TypeError):
       rpn.calculate("1 2 3 +")
-  def test_multiply(self):
-    result = rpn.calculate("3 4 *")
-    self.assertEqual(12, result)
-  def test_divide(self):
-    result = rpn.calculate("8 4 /")
-    self.assertEqual(2, result)

@@ -2,6 +2,7 @@
 
 import operator
 
+
 operators = {
   '+': operator.add,
   '-': operator.sub,
@@ -9,38 +10,25 @@ operators = {
   '/': operator.truediv,
 }
 
-def calculate(s):
-  stack = []
-  for token in s.split():
-    if token == '+':
+def calculate(myarg):
+  stack = list()
+  for token in myarg.split():
+    try:
+      token = int(token)
+      stack.append(token)
+    except ValueError:
+      function = operators[token]
       arg2 = stack.pop()
       arg1 = stack.pop()
-      result = arg1 + arg2
+      result = function(arg1, arg2)
       stack.append(result)
-    elif token == '-':
-      arg2 = stack.pop()
-      arg1 = stack.pop()
-      result = arg1 - arg2
-      stack.append(result)
-    elif token == '*':
-      arg2 = stack.pop()
-      arg1 = stack.pop()
-      result = arg1 * arg2
-      stack.append(result)
-    elif token == '/':
-      arg2 = stack.pop()
-      arg1 = stack.pop()
-      result = arg1 / arg2
-      stack.append(result)
-    else:
-      stack.append(int(token))
   if len(stack) != 1:
-    raise TypeError
+    raise TypeError("Too many parameters")
   return stack.pop()
 
 def main():
   while True:
-    result = calculate(input('rpn calc> '))
+    result = calculate(input("rpn calc> "))
     print(result)
 
 if __name__ == '__main__':
