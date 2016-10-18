@@ -2,6 +2,8 @@
 
 import operator
 
+def factorial(x):
+  return x * factorial(x - 1)
 
 operators = {
   '+': operator.add,
