@@ -8,8 +8,6 @@ def factorial(x):
     return 1
   return x * factorial(x - 1)
 
-def
-
 operators = {
   '+': operator.add,
   '-': operator.sub,
